@@ -11,9 +11,12 @@ class obj
 
 public:
 
-	virtual void write(std::ostream & os);
+	virtual void write(std::ostream & os) = 0;
 
-	virtual ~obj();
+	virtual ~obj()
+	{
+
+	}
 
 };
 
