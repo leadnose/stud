@@ -5,32 +5,23 @@
 #include "fixnum.hh"
 #include "str.hh"
 #include "module.hh"
-
-void stud_atexit()
-{
-	std::cerr << "memory still in use at exit: " << stud::mem_used << std::endl;
-}
+#include "osp.hh"
 
 int main()
 {
 	using namespace std;
 	using namespace stud;
 
-	atexit(stud_atexit);
-	
-	fixnum *p = fixnum::make_fixnum(666);
+	osp<fixnum> p = fixnum::make_fixnum(666);
 	p->write(cout);
 
-	str *s = str::make_str("hello, world\n");
+	osp<str> s = str::make_str("hello, world\n");
 	s->write(cout);
 
 	vector<pair<string,obj*> > syms;
 
-	module *m = module::make_module("testi-moduuli", syms);
+	osp<module> m = module::make_module("testi-moduuli", syms);
 	m->write(cout);
 
-	delete p;
-	delete s;
-	delete m;
 }
 

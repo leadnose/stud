@@ -20,7 +20,6 @@ namespace stud
 
 			void * operator new(size_t n)
 			{
-				std::cerr << "allocate(" << n << ")" << std::endl;
 				void *p = malloc(n);
 				if(0 == p)
 				{
@@ -44,7 +43,6 @@ namespace stud
 				free(p);	
 				allocs.erase(it);
 				mem_used -= n;
-				std::cerr << "deleted " << n << " bytes at " << p << std::endl;
 			}
 
 			virtual void write(std::ostream & os) = 0;
