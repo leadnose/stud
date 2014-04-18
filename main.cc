@@ -5,6 +5,7 @@
 #include "fixnum.hh"
 #include "str.hh"
 #include "module.hh"
+#include "vec.hh"
 #include "osp.hh"
 
 int main()
@@ -12,16 +13,15 @@ int main()
 	using namespace std;
 	using namespace stud;
 
-	osp<fixnum> p = fixnum::make_fixnum(666);
-	p->write(cout);
+	osp<vec> v = vec::make_vec();
 
-	osp<str> s = str::make_str("hello, world\n");
-	s->write(cout);
-
+	v->push_back(fixnum::make_fixnum(666));
+	v->push_back(str::make_str("hello, world\n"));
 	vector<pair<string,obj*> > syms;
+	v->push_back(module::make_module("testi-moduuli", syms));
 
-	osp<module> m = module::make_module("testi-moduuli", syms);
-	m->write(cout);
+	v->write(cout);
+	
 
 }
 
